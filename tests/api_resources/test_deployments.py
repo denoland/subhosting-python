@@ -1,0 +1,276 @@
+# File generated from our OpenAPI spec by Stainless.
+
+from __future__ import annotations
+
+import os
+from typing import Any, cast
+
+import pytest
+
+from subhosting import Subhosting, AsyncSubhosting
+from tests.utils import assert_matches_type
+from subhosting.types.shared import Deployment
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+
+
+class TestDeployments:
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_delete(self, client: Subhosting) -> None:
+        deployment = client.deployments.delete(
+            "abcde12vwxyz",
+        )
+        assert deployment is None
+
+    @parametrize
+    def test_raw_response_delete(self, client: Subhosting) -> None:
+        response = client.deployments.with_raw_response.delete(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = response.parse()
+        assert deployment is None
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Subhosting) -> None:
+        with client.deployments.with_streaming_response.delete(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = response.parse()
+            assert deployment is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Subhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            client.deployments.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    def test_method_get(self, client: Subhosting) -> None:
+        deployment = client.deployments.get(
+            "abcde12vwxyz",
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    def test_raw_response_get(self, client: Subhosting) -> None:
+        response = client.deployments.with_raw_response.get(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = response.parse()
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get(self, client: Subhosting) -> None:
+        with client.deployments.with_streaming_response.get(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = response.parse()
+            assert_matches_type(Deployment, deployment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get(self, client: Subhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            client.deployments.with_raw_response.get(
+                "",
+            )
+
+    @parametrize
+    def test_method_redeploy(self, client: Subhosting) -> None:
+        deployment = client.deployments.redeploy(
+            "abcde12vwxyz",
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    def test_method_redeploy_with_all_params(self, client: Subhosting) -> None:
+        deployment = client.deployments.redeploy(
+            "abcde12vwxyz",
+            databases={"default": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"},
+            description="Updated description",
+            env_vars={
+                "MY_ENV": "hey",
+                "ENV_TO_BE_DELETED": None,
+            },
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    def test_raw_response_redeploy(self, client: Subhosting) -> None:
+        response = client.deployments.with_raw_response.redeploy(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = response.parse()
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_redeploy(self, client: Subhosting) -> None:
+        with client.deployments.with_streaming_response.redeploy(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = response.parse()
+            assert_matches_type(Deployment, deployment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_redeploy(self, client: Subhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            client.deployments.with_raw_response.redeploy(
+                "",
+            )
+
+
+class TestAsyncDeployments:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncSubhosting) -> None:
+        deployment = await async_client.deployments.delete(
+            "abcde12vwxyz",
+        )
+        assert deployment is None
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncSubhosting) -> None:
+        response = await async_client.deployments.with_raw_response.delete(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = await response.parse()
+        assert deployment is None
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncSubhosting) -> None:
+        async with async_client.deployments.with_streaming_response.delete(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = await response.parse()
+            assert deployment is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncSubhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            await async_client.deployments.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    async def test_method_get(self, async_client: AsyncSubhosting) -> None:
+        deployment = await async_client.deployments.get(
+            "abcde12vwxyz",
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get(self, async_client: AsyncSubhosting) -> None:
+        response = await async_client.deployments.with_raw_response.get(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = await response.parse()
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get(self, async_client: AsyncSubhosting) -> None:
+        async with async_client.deployments.with_streaming_response.get(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = await response.parse()
+            assert_matches_type(Deployment, deployment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get(self, async_client: AsyncSubhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            await async_client.deployments.with_raw_response.get(
+                "",
+            )
+
+    @parametrize
+    async def test_method_redeploy(self, async_client: AsyncSubhosting) -> None:
+        deployment = await async_client.deployments.redeploy(
+            "abcde12vwxyz",
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    async def test_method_redeploy_with_all_params(self, async_client: AsyncSubhosting) -> None:
+        deployment = await async_client.deployments.redeploy(
+            "abcde12vwxyz",
+            databases={"default": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"},
+            description="Updated description",
+            env_vars={
+                "MY_ENV": "hey",
+                "ENV_TO_BE_DELETED": None,
+            },
+        )
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    async def test_raw_response_redeploy(self, async_client: AsyncSubhosting) -> None:
+        response = await async_client.deployments.with_raw_response.redeploy(
+            "abcde12vwxyz",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        deployment = await response.parse()
+        assert_matches_type(Deployment, deployment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_redeploy(self, async_client: AsyncSubhosting) -> None:
+        async with async_client.deployments.with_streaming_response.redeploy(
+            "abcde12vwxyz",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            deployment = await response.parse()
+            assert_matches_type(Deployment, deployment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_redeploy(self, async_client: AsyncSubhosting) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `deployment_id` but received ''"):
+            await async_client.deployments.with_raw_response.redeploy(
+                "",
+            )
