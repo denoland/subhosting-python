@@ -275,3 +275,14 @@ We are keen for your feedback; please open an [issue](https://www.github.com/den
 ## Requirements
 
 Python 3.7 or higher.
+
+## Contributing
+
+This library is auto-generated with
+[Stainless API](https://www.stainlessapi.com/) based on our
+[OpenAPI spec](https://apidocs.deno.com/). If you’re interested in contributing
+to the readme/documentation, feel free to submit a PR. However, since our
+OpenAPI spec is generated from our private Deno Deploy repository, if you’re
+interested in contributing code, please provide feedback in the
+[issues](https://github.com/denoland/subhosting-python/issues) and we’ll review
+it.
