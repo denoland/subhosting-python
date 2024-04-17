@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -7,7 +7,10 @@ from typing import Dict, Optional
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -41,7 +44,7 @@ class Deployments(SyncAPIResource):
         assets: Dict[str, deployment_create_params.Assets],
         entry_point_url: str,
         env_vars: Dict[str, str],
-        compiler_options: deployment_create_params.CompilerOptions | NotGiven = NOT_GIVEN,
+        compiler_options: Optional[deployment_create_params.CompilerOptions] | NotGiven = NOT_GIVEN,
         databases: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         import_map_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -241,7 +244,7 @@ class AsyncDeployments(AsyncAPIResource):
         assets: Dict[str, deployment_create_params.Assets],
         entry_point_url: str,
         env_vars: Dict[str, str],
-        compiler_options: deployment_create_params.CompilerOptions | NotGiven = NOT_GIVEN,
+        compiler_options: Optional[deployment_create_params.CompilerOptions] | NotGiven = NOT_GIVEN,
         databases: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         import_map_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -338,7 +341,7 @@ class AsyncDeployments(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return await self._post(
             f"/projects/{project_id}/deployments",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "assets": assets,
                     "entry_point_url": entry_point_url,
@@ -410,7 +413,7 @@ class AsyncDeployments(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "limit": limit,
                         "order": order,

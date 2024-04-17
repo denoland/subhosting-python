@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -8,7 +8,10 @@ import httpx
 
 from ...types import project_update_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from .analytics import (
     Analytics,
@@ -226,7 +229,7 @@ class AsyncProjects(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return await self._patch(
             f"/projects/{project_id}",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "description": description,
                     "name": name,

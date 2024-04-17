@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -8,7 +8,10 @@ import httpx
 
 from ...types import deployment_redeploy_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .app_logs import (
     AppLogs,
     AsyncAppLogs,
@@ -416,7 +419,7 @@ class AsyncDeployments(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `deployment_id` but received {deployment_id!r}")
         return await self._post(
             f"/deployments/{deployment_id}/redeploy",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "databases": databases,
                     "description": description,

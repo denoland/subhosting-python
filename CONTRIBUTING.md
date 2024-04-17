@@ -59,7 +59,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-pip install git+ssh://git@github.com:denoland/subhosting-python.git
+pip install git+ssh://git@github.com/denoland/subhosting-python.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
@@ -86,7 +86,7 @@ Most tests require you to [set up a mock server](https://github.com/stoplightio/
 
 ```bash
 # you will need npm installed
-npx prism path/to/your/openapi.yml
+npx prism mock path/to/your/openapi.yml
 ```
 
 ```bash
@@ -121,5 +121,5 @@ You can release to package managers by using [the `Publish PyPI` GitHub action](
 
 ### Publish manually
 
-If you need to manually release a package, you can run the `bin/publish-pypi` script with an `PYPI_TOKEN` set on
+If you need to manually release a package, you can run the `bin/publish-pypi` script with a `PYPI_TOKEN` set on
 the environment.
