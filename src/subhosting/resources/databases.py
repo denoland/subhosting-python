@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -8,7 +8,10 @@ import httpx
 
 from ..types import database_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -113,7 +116,7 @@ class AsyncDatabases(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `database_id` but received {database_id!r}")
         return await self._patch(
             f"/databases/{database_id}",
-            body=maybe_transform({"description": description}, database_update_params.DatabaseUpdateParams),
+            body=await async_maybe_transform({"description": description}, database_update_params.DatabaseUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
