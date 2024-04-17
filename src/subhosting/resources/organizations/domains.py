@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -7,7 +7,10 @@ from typing import Optional
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -185,7 +188,7 @@ class AsyncDomains(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `organization_id` but received {organization_id!r}")
         return await self._post(
             f"/organizations/{organization_id}/domains",
-            body=maybe_transform({"domain": domain}, domain_create_params.DomainCreateParams),
+            body=await async_maybe_transform({"domain": domain}, domain_create_params.DomainCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -246,7 +249,7 @@ class AsyncDomains(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "limit": limit,
                         "order": order,

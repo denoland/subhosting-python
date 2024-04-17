@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -300,6 +300,16 @@ class TestSubhosting:
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
             assert timeout == DEFAULT_TIMEOUT  # our default
+
+    async def test_invalid_http_client(self) -> None:
+        with pytest.raises(TypeError, match="Invalid `http_client` arg"):
+            async with httpx.AsyncClient() as http_client:
+                Subhosting(
+                    base_url=base_url,
+                    bearer_token=bearer_token,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
 
     def test_default_headers_option(self) -> None:
         client = Subhosting(
@@ -665,6 +675,15 @@ class TestSubhosting:
 
         assert isinstance(exc.value.__cause__, ValidationError)
 
+    def test_client_max_retries_validation(self) -> None:
+        with pytest.raises(TypeError, match=r"max_retries cannot be None"):
+            Subhosting(
+                base_url=base_url,
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
+
     @pytest.mark.respx(base_url=base_url)
     def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
         class Model(BaseModel):
@@ -992,6 +1011,16 @@ class TestAsyncSubhosting:
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
             assert timeout == DEFAULT_TIMEOUT  # our default
+
+    def test_invalid_http_client(self) -> None:
+        with pytest.raises(TypeError, match="Invalid `http_client` arg"):
+            with httpx.Client() as http_client:
+                AsyncSubhosting(
+                    base_url=base_url,
+                    bearer_token=bearer_token,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
 
     def test_default_headers_option(self) -> None:
         client = AsyncSubhosting(
@@ -1358,6 +1387,15 @@ class TestAsyncSubhosting:
             await self.client.get("/foo", cast_to=Model)
 
         assert isinstance(exc.value.__cause__, ValidationError)
+
+    async def test_client_max_retries_validation(self) -> None:
+        with pytest.raises(TypeError, match=r"max_retries cannot be None"):
+            AsyncSubhosting(
+                base_url=base_url,
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
