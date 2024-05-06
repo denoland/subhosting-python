@@ -17,7 +17,6 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from subhosting import Subhosting, AsyncSubhosting, APIResponseValidationError
-from subhosting._client import Subhosting, AsyncSubhosting
 from subhosting._models import BaseModel, FinalRequestOptions
 from subhosting._constants import RAW_RESPONSE_HEADER
 from subhosting._exceptions import APIStatusError, APITimeoutError, SubhostingError, APIResponseValidationError

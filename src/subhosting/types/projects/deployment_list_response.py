@@ -2,7 +2,7 @@
 
 from typing import List
 
-from ..shared import Deployment
+from ..shared.deployment import Deployment
 
 __all__ = ["DeploymentListResponse"]
 

@@ -22,20 +22,21 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Project
-from ...types.organizations import ProjectListResponse, project_list_params, project_create_params
+from ...types.organizations import project_list_params, project_create_params
+from ...types.shared.project import Project
+from ...types.organizations.project_list_response import ProjectListResponse
 
-__all__ = ["Projects", "AsyncProjects"]
+__all__ = ["ProjectsResource", "AsyncProjectsResource"]
 
 
-class Projects(SyncAPIResource):
+class ProjectsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ProjectsWithRawResponse:
-        return ProjectsWithRawResponse(self)
+    def with_raw_response(self) -> ProjectsResourceWithRawResponse:
+        return ProjectsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ProjectsWithStreamingResponse:
-        return ProjectsWithStreamingResponse(self)
+    def with_streaming_response(self) -> ProjectsResourceWithStreamingResponse:
+        return ProjectsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -153,14 +154,14 @@ class Projects(SyncAPIResource):
         )
 
 
-class AsyncProjects(AsyncAPIResource):
+class AsyncProjectsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncProjectsWithRawResponse:
-        return AsyncProjectsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProjectsResourceWithRawResponse:
+        return AsyncProjectsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProjectsWithStreamingResponse:
-        return AsyncProjectsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProjectsResourceWithStreamingResponse:
+        return AsyncProjectsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -278,8 +279,8 @@ class AsyncProjects(AsyncAPIResource):
         )
 
 
-class ProjectsWithRawResponse:
-    def __init__(self, projects: Projects) -> None:
+class ProjectsResourceWithRawResponse:
+    def __init__(self, projects: ProjectsResource) -> None:
         self._projects = projects
 
         self.create = to_raw_response_wrapper(
@@ -290,8 +291,8 @@ class ProjectsWithRawResponse:
         )
 
 
-class AsyncProjectsWithRawResponse:
-    def __init__(self, projects: AsyncProjects) -> None:
+class AsyncProjectsResourceWithRawResponse:
+    def __init__(self, projects: AsyncProjectsResource) -> None:
         self._projects = projects
 
         self.create = async_to_raw_response_wrapper(
@@ -302,8 +303,8 @@ class AsyncProjectsWithRawResponse:
         )
 
 
-class ProjectsWithStreamingResponse:
-    def __init__(self, projects: Projects) -> None:
+class ProjectsResourceWithStreamingResponse:
+    def __init__(self, projects: ProjectsResource) -> None:
         self._projects = projects
 
         self.create = to_streamed_response_wrapper(
@@ -314,8 +315,8 @@ class ProjectsWithStreamingResponse:
         )
 
 
-class AsyncProjectsWithStreamingResponse:
-    def __init__(self, projects: AsyncProjects) -> None:
+class AsyncProjectsResourceWithStreamingResponse:
+    def __init__(self, projects: AsyncProjectsResource) -> None:
         self._projects = projects
 
         self.create = async_to_streamed_response_wrapper(

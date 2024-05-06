@@ -2,7 +2,7 @@
 
 from typing import List
 
-from ..shared import KvDatabase
+from ..shared.kv_database import KvDatabase
 
 __all__ = ["DatabaseListResponse"]
 

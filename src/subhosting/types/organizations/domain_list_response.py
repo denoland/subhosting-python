@@ -2,7 +2,7 @@
 
 from typing import List
 
-from ..shared import Domain
+from ..shared.domain import Domain
 
 __all__ = ["DomainListResponse"]
 
