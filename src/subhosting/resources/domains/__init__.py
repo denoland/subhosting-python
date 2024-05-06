@@ -1,33 +1,33 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from .domains import (
-    Domains,
-    AsyncDomains,
-    DomainsWithRawResponse,
-    AsyncDomainsWithRawResponse,
-    DomainsWithStreamingResponse,
-    AsyncDomainsWithStreamingResponse,
+    DomainsResource,
+    AsyncDomainsResource,
+    DomainsResourceWithRawResponse,
+    AsyncDomainsResourceWithRawResponse,
+    DomainsResourceWithStreamingResponse,
+    AsyncDomainsResourceWithStreamingResponse,
 )
 from .certificates import (
-    Certificates,
-    AsyncCertificates,
-    CertificatesWithRawResponse,
-    AsyncCertificatesWithRawResponse,
-    CertificatesWithStreamingResponse,
-    AsyncCertificatesWithStreamingResponse,
+    CertificatesResource,
+    AsyncCertificatesResource,
+    CertificatesResourceWithRawResponse,
+    AsyncCertificatesResourceWithRawResponse,
+    CertificatesResourceWithStreamingResponse,
+    AsyncCertificatesResourceWithStreamingResponse,
 )
 
 __all__ = [
-    "Certificates",
-    "AsyncCertificates",
-    "CertificatesWithRawResponse",
-    "AsyncCertificatesWithRawResponse",
-    "CertificatesWithStreamingResponse",
-    "AsyncCertificatesWithStreamingResponse",
-    "Domains",
-    "AsyncDomains",
-    "DomainsWithRawResponse",
-    "AsyncDomainsWithRawResponse",
-    "DomainsWithStreamingResponse",
-    "AsyncDomainsWithStreamingResponse",
+    "CertificatesResource",
+    "AsyncCertificatesResource",
+    "CertificatesResourceWithRawResponse",
+    "AsyncCertificatesResourceWithRawResponse",
+    "CertificatesResourceWithStreamingResponse",
+    "AsyncCertificatesResourceWithStreamingResponse",
+    "DomainsResource",
+    "AsyncDomainsResource",
+    "DomainsResourceWithRawResponse",
+    "AsyncDomainsResourceWithRawResponse",
+    "DomainsResourceWithStreamingResponse",
+    "AsyncDomainsResourceWithStreamingResponse",
 ]

@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -8,7 +8,10 @@ import httpx
 
 from ..types import database_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -20,19 +23,19 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.shared import KvDatabase
+from ..types.shared.kv_database import KvDatabase
 
-__all__ = ["Databases", "AsyncDatabases"]
+__all__ = ["DatabasesResource", "AsyncDatabasesResource"]
 
 
-class Databases(SyncAPIResource):
+class DatabasesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DatabasesWithRawResponse:
-        return DatabasesWithRawResponse(self)
+    def with_raw_response(self) -> DatabasesResourceWithRawResponse:
+        return DatabasesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DatabasesWithStreamingResponse:
-        return DatabasesWithStreamingResponse(self)
+    def with_streaming_response(self) -> DatabasesResourceWithStreamingResponse:
+        return DatabasesResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -73,14 +76,14 @@ class Databases(SyncAPIResource):
         )
 
 
-class AsyncDatabases(AsyncAPIResource):
+class AsyncDatabasesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDatabasesWithRawResponse:
-        return AsyncDatabasesWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDatabasesResourceWithRawResponse:
+        return AsyncDatabasesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDatabasesWithStreamingResponse:
-        return AsyncDatabasesWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDatabasesResourceWithStreamingResponse:
+        return AsyncDatabasesResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -113,7 +116,7 @@ class AsyncDatabases(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `database_id` but received {database_id!r}")
         return await self._patch(
             f"/databases/{database_id}",
-            body=maybe_transform({"description": description}, database_update_params.DatabaseUpdateParams),
+            body=await async_maybe_transform({"description": description}, database_update_params.DatabaseUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -121,8 +124,8 @@ class AsyncDatabases(AsyncAPIResource):
         )
 
 
-class DatabasesWithRawResponse:
-    def __init__(self, databases: Databases) -> None:
+class DatabasesResourceWithRawResponse:
+    def __init__(self, databases: DatabasesResource) -> None:
         self._databases = databases
 
         self.update = to_raw_response_wrapper(
@@ -130,8 +133,8 @@ class DatabasesWithRawResponse:
         )
 
 
-class AsyncDatabasesWithRawResponse:
-    def __init__(self, databases: AsyncDatabases) -> None:
+class AsyncDatabasesResourceWithRawResponse:
+    def __init__(self, databases: AsyncDatabasesResource) -> None:
         self._databases = databases
 
         self.update = async_to_raw_response_wrapper(
@@ -139,8 +142,8 @@ class AsyncDatabasesWithRawResponse:
         )
 
 
-class DatabasesWithStreamingResponse:
-    def __init__(self, databases: Databases) -> None:
+class DatabasesResourceWithStreamingResponse:
+    def __init__(self, databases: DatabasesResource) -> None:
         self._databases = databases
 
         self.update = to_streamed_response_wrapper(
@@ -148,8 +151,8 @@ class DatabasesWithStreamingResponse:
         )
 
 
-class AsyncDatabasesWithStreamingResponse:
-    def __init__(self, databases: AsyncDatabases) -> None:
+class AsyncDatabasesResourceWithStreamingResponse:
+    def __init__(self, databases: AsyncDatabasesResource) -> None:
         self._databases = databases
 
         self.update = async_to_streamed_response_wrapper(

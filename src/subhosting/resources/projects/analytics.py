@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -8,7 +8,10 @@ from datetime import datetime
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -20,20 +23,20 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import analytics
 from ...types.projects import analytics_get_params
+from ...types.shared.analytics import Analytics
 
-__all__ = ["Analytics", "AsyncAnalytics"]
+__all__ = ["AnalyticsResource", "AsyncAnalyticsResource"]
 
 
-class Analytics(SyncAPIResource):
+class AnalyticsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AnalyticsWithRawResponse:
-        return AnalyticsWithRawResponse(self)
+    def with_raw_response(self) -> AnalyticsResourceWithRawResponse:
+        return AnalyticsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AnalyticsWithStreamingResponse:
-        return AnalyticsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AnalyticsResourceWithStreamingResponse:
+        return AnalyticsResourceWithStreamingResponse(self)
 
     def get(
         self,
@@ -47,7 +50,7 @@ class Analytics(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> analytics.Analytics:
+    ) -> Analytics:
         """Retrieve project analytics
 
         This API returns analytics for the specified project.
@@ -90,18 +93,18 @@ class Analytics(SyncAPIResource):
                     analytics_get_params.AnalyticsGetParams,
                 ),
             ),
-            cast_to=analytics.Analytics,
+            cast_to=Analytics,
         )
 
 
-class AsyncAnalytics(AsyncAPIResource):
+class AsyncAnalyticsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAnalyticsWithRawResponse:
-        return AsyncAnalyticsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAnalyticsResourceWithRawResponse:
+        return AsyncAnalyticsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAnalyticsWithStreamingResponse:
-        return AsyncAnalyticsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAnalyticsResourceWithStreamingResponse:
+        return AsyncAnalyticsResourceWithStreamingResponse(self)
 
     async def get(
         self,
@@ -115,7 +118,7 @@ class AsyncAnalytics(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> analytics.Analytics:
+    ) -> Analytics:
         """Retrieve project analytics
 
         This API returns analytics for the specified project.
@@ -150,7 +153,7 @@ class AsyncAnalytics(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "since": since,
                         "until": until,
@@ -158,12 +161,12 @@ class AsyncAnalytics(AsyncAPIResource):
                     analytics_get_params.AnalyticsGetParams,
                 ),
             ),
-            cast_to=analytics.Analytics,
+            cast_to=Analytics,
         )
 
 
-class AnalyticsWithRawResponse:
-    def __init__(self, analytics: Analytics) -> None:
+class AnalyticsResourceWithRawResponse:
+    def __init__(self, analytics: AnalyticsResource) -> None:
         self._analytics = analytics
 
         self.get = to_raw_response_wrapper(
@@ -171,8 +174,8 @@ class AnalyticsWithRawResponse:
         )
 
 
-class AsyncAnalyticsWithRawResponse:
-    def __init__(self, analytics: AsyncAnalytics) -> None:
+class AsyncAnalyticsResourceWithRawResponse:
+    def __init__(self, analytics: AsyncAnalyticsResource) -> None:
         self._analytics = analytics
 
         self.get = async_to_raw_response_wrapper(
@@ -180,8 +183,8 @@ class AsyncAnalyticsWithRawResponse:
         )
 
 
-class AnalyticsWithStreamingResponse:
-    def __init__(self, analytics: Analytics) -> None:
+class AnalyticsResourceWithStreamingResponse:
+    def __init__(self, analytics: AnalyticsResource) -> None:
         self._analytics = analytics
 
         self.get = to_streamed_response_wrapper(
@@ -189,8 +192,8 @@ class AnalyticsWithStreamingResponse:
         )
 
 
-class AsyncAnalyticsWithStreamingResponse:
-    def __init__(self, analytics: AsyncAnalytics) -> None:
+class AsyncAnalyticsResourceWithStreamingResponse:
+    def __init__(self, analytics: AsyncAnalyticsResource) -> None:
         self._analytics = analytics
 
         self.get = async_to_streamed_response_wrapper(

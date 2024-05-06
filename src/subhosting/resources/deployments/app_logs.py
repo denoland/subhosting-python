@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -9,7 +9,10 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -21,64 +24,67 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.deployments import AppLogGetResponse, app_log_get_params
+from ...types.deployments import app_log_get_params
+from ...types.deployments.app_log_get_response import AppLogGetResponse
 
-__all__ = ["AppLogs", "AsyncAppLogs"]
+__all__ = ["AppLogsResource", "AsyncAppLogsResource"]
 
 
-class AppLogs(SyncAPIResource):
+class AppLogsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AppLogsWithRawResponse:
-        return AppLogsWithRawResponse(self)
+    def with_raw_response(self) -> AppLogsResourceWithRawResponse:
+        return AppLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AppLogsWithStreamingResponse:
-        return AppLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AppLogsResourceWithStreamingResponse:
+        return AppLogsResourceWithStreamingResponse(self)
 
     def get(
         self,
         deployment_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        level: Literal["error", "warning", "info", "debug"] | NotGiven = NOT_GIVEN,
+        level: Optional[Literal["error", "warning", "info", "debug"]] | NotGiven = NOT_GIVEN,
         limit: Optional[int] | NotGiven = NOT_GIVEN,
         order: Optional[str] | NotGiven = NOT_GIVEN,
         q: Optional[str] | NotGiven = NOT_GIVEN,
-        region: Literal[
-            "gcp-asia-east1",
-            "gcp-asia-east2",
-            "gcp-asia-northeast1",
-            "gcp-asia-northeast2",
-            "gcp-asia-northeast3",
-            "gcp-asia-south1",
-            "gcp-asia-south2",
-            "gcp-asia-southeast1",
-            "gcp-asia-southeast2",
-            "gcp-australia-southeast1",
-            "gcp-australia-southeast2",
-            "gcp-europe-central2",
-            "gcp-europe-north1",
-            "gcp-europe-southwest1",
-            "gcp-europe-west1",
-            "gcp-europe-west2",
-            "gcp-europe-west3",
-            "gcp-europe-west4",
-            "gcp-europe-west6",
-            "gcp-europe-west8",
-            "gcp-me-west1",
-            "gcp-northamerica-northeast1",
-            "gcp-northamerica-northeast2",
-            "gcp-southamerica-east1",
-            "gcp-southamerica-west1",
-            "gcp-us-central1",
-            "gcp-us-east1",
-            "gcp-us-east4",
-            "gcp-us-east5",
-            "gcp-us-south1",
-            "gcp-us-west1",
-            "gcp-us-west2",
-            "gcp-us-west3",
-            "gcp-us-west4",
+        region: Optional[
+            Literal[
+                "gcp-asia-east1",
+                "gcp-asia-east2",
+                "gcp-asia-northeast1",
+                "gcp-asia-northeast2",
+                "gcp-asia-northeast3",
+                "gcp-asia-south1",
+                "gcp-asia-south2",
+                "gcp-asia-southeast1",
+                "gcp-asia-southeast2",
+                "gcp-australia-southeast1",
+                "gcp-australia-southeast2",
+                "gcp-europe-central2",
+                "gcp-europe-north1",
+                "gcp-europe-southwest1",
+                "gcp-europe-west1",
+                "gcp-europe-west2",
+                "gcp-europe-west3",
+                "gcp-europe-west4",
+                "gcp-europe-west6",
+                "gcp-europe-west8",
+                "gcp-me-west1",
+                "gcp-northamerica-northeast1",
+                "gcp-northamerica-northeast2",
+                "gcp-southamerica-east1",
+                "gcp-southamerica-west1",
+                "gcp-us-central1",
+                "gcp-us-east1",
+                "gcp-us-east4",
+                "gcp-us-east5",
+                "gcp-us-south1",
+                "gcp-us-west1",
+                "gcp-us-west2",
+                "gcp-us-west3",
+                "gcp-us-west4",
+            ]
         ]
         | NotGiven = NOT_GIVEN,
         since: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -186,59 +192,61 @@ class AppLogs(SyncAPIResource):
         )
 
 
-class AsyncAppLogs(AsyncAPIResource):
+class AsyncAppLogsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAppLogsWithRawResponse:
-        return AsyncAppLogsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAppLogsResourceWithRawResponse:
+        return AsyncAppLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAppLogsWithStreamingResponse:
-        return AsyncAppLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAppLogsResourceWithStreamingResponse:
+        return AsyncAppLogsResourceWithStreamingResponse(self)
 
     async def get(
         self,
         deployment_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        level: Literal["error", "warning", "info", "debug"] | NotGiven = NOT_GIVEN,
+        level: Optional[Literal["error", "warning", "info", "debug"]] | NotGiven = NOT_GIVEN,
         limit: Optional[int] | NotGiven = NOT_GIVEN,
         order: Optional[str] | NotGiven = NOT_GIVEN,
         q: Optional[str] | NotGiven = NOT_GIVEN,
-        region: Literal[
-            "gcp-asia-east1",
-            "gcp-asia-east2",
-            "gcp-asia-northeast1",
-            "gcp-asia-northeast2",
-            "gcp-asia-northeast3",
-            "gcp-asia-south1",
-            "gcp-asia-south2",
-            "gcp-asia-southeast1",
-            "gcp-asia-southeast2",
-            "gcp-australia-southeast1",
-            "gcp-australia-southeast2",
-            "gcp-europe-central2",
-            "gcp-europe-north1",
-            "gcp-europe-southwest1",
-            "gcp-europe-west1",
-            "gcp-europe-west2",
-            "gcp-europe-west3",
-            "gcp-europe-west4",
-            "gcp-europe-west6",
-            "gcp-europe-west8",
-            "gcp-me-west1",
-            "gcp-northamerica-northeast1",
-            "gcp-northamerica-northeast2",
-            "gcp-southamerica-east1",
-            "gcp-southamerica-west1",
-            "gcp-us-central1",
-            "gcp-us-east1",
-            "gcp-us-east4",
-            "gcp-us-east5",
-            "gcp-us-south1",
-            "gcp-us-west1",
-            "gcp-us-west2",
-            "gcp-us-west3",
-            "gcp-us-west4",
+        region: Optional[
+            Literal[
+                "gcp-asia-east1",
+                "gcp-asia-east2",
+                "gcp-asia-northeast1",
+                "gcp-asia-northeast2",
+                "gcp-asia-northeast3",
+                "gcp-asia-south1",
+                "gcp-asia-south2",
+                "gcp-asia-southeast1",
+                "gcp-asia-southeast2",
+                "gcp-australia-southeast1",
+                "gcp-australia-southeast2",
+                "gcp-europe-central2",
+                "gcp-europe-north1",
+                "gcp-europe-southwest1",
+                "gcp-europe-west1",
+                "gcp-europe-west2",
+                "gcp-europe-west3",
+                "gcp-europe-west4",
+                "gcp-europe-west6",
+                "gcp-europe-west8",
+                "gcp-me-west1",
+                "gcp-northamerica-northeast1",
+                "gcp-northamerica-northeast2",
+                "gcp-southamerica-east1",
+                "gcp-southamerica-west1",
+                "gcp-us-central1",
+                "gcp-us-east1",
+                "gcp-us-east4",
+                "gcp-us-east5",
+                "gcp-us-south1",
+                "gcp-us-west1",
+                "gcp-us-west2",
+                "gcp-us-west3",
+                "gcp-us-west4",
+            ]
         ]
         | NotGiven = NOT_GIVEN,
         since: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -327,7 +335,7 @@ class AsyncAppLogs(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "cursor": cursor,
                         "level": level,
@@ -346,8 +354,8 @@ class AsyncAppLogs(AsyncAPIResource):
         )
 
 
-class AppLogsWithRawResponse:
-    def __init__(self, app_logs: AppLogs) -> None:
+class AppLogsResourceWithRawResponse:
+    def __init__(self, app_logs: AppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = to_raw_response_wrapper(
@@ -355,8 +363,8 @@ class AppLogsWithRawResponse:
         )
 
 
-class AsyncAppLogsWithRawResponse:
-    def __init__(self, app_logs: AsyncAppLogs) -> None:
+class AsyncAppLogsResourceWithRawResponse:
+    def __init__(self, app_logs: AsyncAppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = async_to_raw_response_wrapper(
@@ -364,8 +372,8 @@ class AsyncAppLogsWithRawResponse:
         )
 
 
-class AppLogsWithStreamingResponse:
-    def __init__(self, app_logs: AppLogs) -> None:
+class AppLogsResourceWithStreamingResponse:
+    def __init__(self, app_logs: AppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = to_streamed_response_wrapper(
@@ -373,8 +381,8 @@ class AppLogsWithStreamingResponse:
         )
 
 
-class AsyncAppLogsWithStreamingResponse:
-    def __init__(self, app_logs: AsyncAppLogs) -> None:
+class AsyncAppLogsResourceWithStreamingResponse:
+    def __init__(self, app_logs: AsyncAppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = async_to_streamed_response_wrapper(

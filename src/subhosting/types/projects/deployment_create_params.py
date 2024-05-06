@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ class DeploymentCreateParams(TypedDict, total=False):
     the deployment.
     """
 
-    compiler_options: Annotated[CompilerOptions, PropertyInfo(alias="compilerOptions")]
+    compiler_options: Annotated[Optional[CompilerOptions], PropertyInfo(alias="compilerOptions")]
     """Compiler options to be used when building the deployment.
 
     If `null` is given, Deno's config file (i.e. `deno.json` or `deno.jsonc`) will

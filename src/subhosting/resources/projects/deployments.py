@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -7,7 +7,10 @@ from typing import Dict, Optional
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -19,20 +22,21 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Deployment
-from ...types.projects import DeploymentListResponse, deployment_list_params, deployment_create_params
+from ...types.projects import deployment_list_params, deployment_create_params
+from ...types.shared.deployment import Deployment
+from ...types.projects.deployment_list_response import DeploymentListResponse
 
-__all__ = ["Deployments", "AsyncDeployments"]
+__all__ = ["DeploymentsResource", "AsyncDeploymentsResource"]
 
 
-class Deployments(SyncAPIResource):
+class DeploymentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DeploymentsWithRawResponse:
-        return DeploymentsWithRawResponse(self)
+    def with_raw_response(self) -> DeploymentsResourceWithRawResponse:
+        return DeploymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DeploymentsWithStreamingResponse:
-        return DeploymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> DeploymentsResourceWithStreamingResponse:
+        return DeploymentsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -41,7 +45,7 @@ class Deployments(SyncAPIResource):
         assets: Dict[str, deployment_create_params.Assets],
         entry_point_url: str,
         env_vars: Dict[str, str],
-        compiler_options: deployment_create_params.CompilerOptions | NotGiven = NOT_GIVEN,
+        compiler_options: Optional[deployment_create_params.CompilerOptions] | NotGiven = NOT_GIVEN,
         databases: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         import_map_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -225,14 +229,14 @@ class Deployments(SyncAPIResource):
         )
 
 
-class AsyncDeployments(AsyncAPIResource):
+class AsyncDeploymentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDeploymentsWithRawResponse:
-        return AsyncDeploymentsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDeploymentsResourceWithRawResponse:
+        return AsyncDeploymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDeploymentsWithStreamingResponse:
-        return AsyncDeploymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDeploymentsResourceWithStreamingResponse:
+        return AsyncDeploymentsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -241,7 +245,7 @@ class AsyncDeployments(AsyncAPIResource):
         assets: Dict[str, deployment_create_params.Assets],
         entry_point_url: str,
         env_vars: Dict[str, str],
-        compiler_options: deployment_create_params.CompilerOptions | NotGiven = NOT_GIVEN,
+        compiler_options: Optional[deployment_create_params.CompilerOptions] | NotGiven = NOT_GIVEN,
         databases: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         import_map_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -338,7 +342,7 @@ class AsyncDeployments(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return await self._post(
             f"/projects/{project_id}/deployments",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "assets": assets,
                     "entry_point_url": entry_point_url,
@@ -410,7 +414,7 @@ class AsyncDeployments(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "limit": limit,
                         "order": order,
@@ -425,8 +429,8 @@ class AsyncDeployments(AsyncAPIResource):
         )
 
 
-class DeploymentsWithRawResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = to_raw_response_wrapper(
@@ -437,8 +441,8 @@ class DeploymentsWithRawResponse:
         )
 
 
-class AsyncDeploymentsWithRawResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = async_to_raw_response_wrapper(
@@ -449,8 +453,8 @@ class AsyncDeploymentsWithRawResponse:
         )
 
 
-class DeploymentsWithStreamingResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = to_streamed_response_wrapper(
@@ -461,8 +465,8 @@ class DeploymentsWithStreamingResponse:
         )
 
 
-class AsyncDeploymentsWithStreamingResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = async_to_streamed_response_wrapper(

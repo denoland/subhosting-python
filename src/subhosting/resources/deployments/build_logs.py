@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -16,19 +16,19 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.deployments import BuildLogGetResponse
+from ...types.deployments.build_log_get_response import BuildLogGetResponse
 
-__all__ = ["BuildLogs", "AsyncBuildLogs"]
+__all__ = ["BuildLogsResource", "AsyncBuildLogsResource"]
 
 
-class BuildLogs(SyncAPIResource):
+class BuildLogsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> BuildLogsWithRawResponse:
-        return BuildLogsWithRawResponse(self)
+    def with_raw_response(self) -> BuildLogsResourceWithRawResponse:
+        return BuildLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> BuildLogsWithStreamingResponse:
-        return BuildLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> BuildLogsResourceWithStreamingResponse:
+        return BuildLogsResourceWithStreamingResponse(self)
 
     def get(
         self,
@@ -72,14 +72,14 @@ class BuildLogs(SyncAPIResource):
         )
 
 
-class AsyncBuildLogs(AsyncAPIResource):
+class AsyncBuildLogsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncBuildLogsWithRawResponse:
-        return AsyncBuildLogsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncBuildLogsResourceWithRawResponse:
+        return AsyncBuildLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBuildLogsWithStreamingResponse:
-        return AsyncBuildLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncBuildLogsResourceWithStreamingResponse:
+        return AsyncBuildLogsResourceWithStreamingResponse(self)
 
     async def get(
         self,
@@ -123,8 +123,8 @@ class AsyncBuildLogs(AsyncAPIResource):
         )
 
 
-class BuildLogsWithRawResponse:
-    def __init__(self, build_logs: BuildLogs) -> None:
+class BuildLogsResourceWithRawResponse:
+    def __init__(self, build_logs: BuildLogsResource) -> None:
         self._build_logs = build_logs
 
         self.get = to_raw_response_wrapper(
@@ -132,8 +132,8 @@ class BuildLogsWithRawResponse:
         )
 
 
-class AsyncBuildLogsWithRawResponse:
-    def __init__(self, build_logs: AsyncBuildLogs) -> None:
+class AsyncBuildLogsResourceWithRawResponse:
+    def __init__(self, build_logs: AsyncBuildLogsResource) -> None:
         self._build_logs = build_logs
 
         self.get = async_to_raw_response_wrapper(
@@ -141,8 +141,8 @@ class AsyncBuildLogsWithRawResponse:
         )
 
 
-class BuildLogsWithStreamingResponse:
-    def __init__(self, build_logs: BuildLogs) -> None:
+class BuildLogsResourceWithStreamingResponse:
+    def __init__(self, build_logs: BuildLogsResource) -> None:
         self._build_logs = build_logs
 
         self.get = to_streamed_response_wrapper(
@@ -150,8 +150,8 @@ class BuildLogsWithStreamingResponse:
         )
 
 
-class AsyncBuildLogsWithStreamingResponse:
-    def __init__(self, build_logs: AsyncBuildLogs) -> None:
+class AsyncBuildLogsResourceWithStreamingResponse:
+    def __init__(self, build_logs: AsyncBuildLogsResource) -> None:
         self._build_logs = build_logs
 
         self.get = async_to_streamed_response_wrapper(

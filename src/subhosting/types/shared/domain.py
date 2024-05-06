@@ -1,11 +1,12 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
 
 __all__ = [
@@ -56,8 +57,9 @@ class ProvisioningStatusManual(BaseModel):
     code: Literal["manual"]
 
 
-ProvisioningStatus = Union[
-    ProvisioningStatusSuccess, ProvisioningStatusFailed, ProvisioningStatusPending, ProvisioningStatusManual
+ProvisioningStatus = Annotated[
+    Union[ProvisioningStatusSuccess, ProvisioningStatusFailed, ProvisioningStatusPending, ProvisioningStatusManual],
+    PropertyInfo(discriminator="code"),
 ]
 
 
