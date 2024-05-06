@@ -13,21 +13,21 @@ from ..._utils import (
     async_maybe_transform,
 )
 from .app_logs import (
-    AppLogs,
-    AsyncAppLogs,
-    AppLogsWithRawResponse,
-    AsyncAppLogsWithRawResponse,
-    AppLogsWithStreamingResponse,
-    AsyncAppLogsWithStreamingResponse,
+    AppLogsResource,
+    AsyncAppLogsResource,
+    AppLogsResourceWithRawResponse,
+    AsyncAppLogsResourceWithRawResponse,
+    AppLogsResourceWithStreamingResponse,
+    AsyncAppLogsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
 from .build_logs import (
-    BuildLogs,
-    AsyncBuildLogs,
-    BuildLogsWithRawResponse,
-    AsyncBuildLogsWithRawResponse,
-    BuildLogsWithStreamingResponse,
-    AsyncBuildLogsWithStreamingResponse,
+    BuildLogsResource,
+    AsyncBuildLogsResource,
+    BuildLogsResourceWithRawResponse,
+    AsyncBuildLogsResourceWithRawResponse,
+    BuildLogsResourceWithStreamingResponse,
+    AsyncBuildLogsResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -39,27 +39,27 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Deployment
+from ...types.shared.deployment import Deployment
 
-__all__ = ["Deployments", "AsyncDeployments"]
+__all__ = ["DeploymentsResource", "AsyncDeploymentsResource"]
 
 
-class Deployments(SyncAPIResource):
+class DeploymentsResource(SyncAPIResource):
     @cached_property
-    def build_logs(self) -> BuildLogs:
-        return BuildLogs(self._client)
-
-    @cached_property
-    def app_logs(self) -> AppLogs:
-        return AppLogs(self._client)
+    def build_logs(self) -> BuildLogsResource:
+        return BuildLogsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> DeploymentsWithRawResponse:
-        return DeploymentsWithRawResponse(self)
+    def app_logs(self) -> AppLogsResource:
+        return AppLogsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> DeploymentsWithStreamingResponse:
-        return DeploymentsWithStreamingResponse(self)
+    def with_raw_response(self) -> DeploymentsResourceWithRawResponse:
+        return DeploymentsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> DeploymentsResourceWithStreamingResponse:
+        return DeploymentsResourceWithStreamingResponse(self)
 
     def delete(
         self,
@@ -239,22 +239,22 @@ class Deployments(SyncAPIResource):
         )
 
 
-class AsyncDeployments(AsyncAPIResource):
+class AsyncDeploymentsResource(AsyncAPIResource):
     @cached_property
-    def build_logs(self) -> AsyncBuildLogs:
-        return AsyncBuildLogs(self._client)
+    def build_logs(self) -> AsyncBuildLogsResource:
+        return AsyncBuildLogsResource(self._client)
 
     @cached_property
-    def app_logs(self) -> AsyncAppLogs:
-        return AsyncAppLogs(self._client)
+    def app_logs(self) -> AsyncAppLogsResource:
+        return AsyncAppLogsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncDeploymentsWithRawResponse:
-        return AsyncDeploymentsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDeploymentsResourceWithRawResponse:
+        return AsyncDeploymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDeploymentsWithStreamingResponse:
-        return AsyncDeploymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDeploymentsResourceWithStreamingResponse:
+        return AsyncDeploymentsResourceWithStreamingResponse(self)
 
     async def delete(
         self,
@@ -434,8 +434,8 @@ class AsyncDeployments(AsyncAPIResource):
         )
 
 
-class DeploymentsWithRawResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.delete = to_raw_response_wrapper(
@@ -449,16 +449,16 @@ class DeploymentsWithRawResponse:
         )
 
     @cached_property
-    def build_logs(self) -> BuildLogsWithRawResponse:
-        return BuildLogsWithRawResponse(self._deployments.build_logs)
+    def build_logs(self) -> BuildLogsResourceWithRawResponse:
+        return BuildLogsResourceWithRawResponse(self._deployments.build_logs)
 
     @cached_property
-    def app_logs(self) -> AppLogsWithRawResponse:
-        return AppLogsWithRawResponse(self._deployments.app_logs)
+    def app_logs(self) -> AppLogsResourceWithRawResponse:
+        return AppLogsResourceWithRawResponse(self._deployments.app_logs)
 
 
-class AsyncDeploymentsWithRawResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.delete = async_to_raw_response_wrapper(
@@ -472,16 +472,16 @@ class AsyncDeploymentsWithRawResponse:
         )
 
     @cached_property
-    def build_logs(self) -> AsyncBuildLogsWithRawResponse:
-        return AsyncBuildLogsWithRawResponse(self._deployments.build_logs)
+    def build_logs(self) -> AsyncBuildLogsResourceWithRawResponse:
+        return AsyncBuildLogsResourceWithRawResponse(self._deployments.build_logs)
 
     @cached_property
-    def app_logs(self) -> AsyncAppLogsWithRawResponse:
-        return AsyncAppLogsWithRawResponse(self._deployments.app_logs)
+    def app_logs(self) -> AsyncAppLogsResourceWithRawResponse:
+        return AsyncAppLogsResourceWithRawResponse(self._deployments.app_logs)
 
 
-class DeploymentsWithStreamingResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.delete = to_streamed_response_wrapper(
@@ -495,16 +495,16 @@ class DeploymentsWithStreamingResponse:
         )
 
     @cached_property
-    def build_logs(self) -> BuildLogsWithStreamingResponse:
-        return BuildLogsWithStreamingResponse(self._deployments.build_logs)
+    def build_logs(self) -> BuildLogsResourceWithStreamingResponse:
+        return BuildLogsResourceWithStreamingResponse(self._deployments.build_logs)
 
     @cached_property
-    def app_logs(self) -> AppLogsWithStreamingResponse:
-        return AppLogsWithStreamingResponse(self._deployments.app_logs)
+    def app_logs(self) -> AppLogsResourceWithStreamingResponse:
+        return AppLogsResourceWithStreamingResponse(self._deployments.app_logs)
 
 
-class AsyncDeploymentsWithStreamingResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.delete = async_to_streamed_response_wrapper(
@@ -518,9 +518,9 @@ class AsyncDeploymentsWithStreamingResponse:
         )
 
     @cached_property
-    def build_logs(self) -> AsyncBuildLogsWithStreamingResponse:
-        return AsyncBuildLogsWithStreamingResponse(self._deployments.build_logs)
+    def build_logs(self) -> AsyncBuildLogsResourceWithStreamingResponse:
+        return AsyncBuildLogsResourceWithStreamingResponse(self._deployments.build_logs)
 
     @cached_property
-    def app_logs(self) -> AsyncAppLogsWithStreamingResponse:
-        return AsyncAppLogsWithStreamingResponse(self._deployments.app_logs)
+    def app_logs(self) -> AsyncAppLogsResourceWithStreamingResponse:
+        return AsyncAppLogsResourceWithStreamingResponse(self._deployments.app_logs)

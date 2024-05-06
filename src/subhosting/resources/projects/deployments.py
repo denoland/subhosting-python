@@ -22,20 +22,21 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Deployment
-from ...types.projects import DeploymentListResponse, deployment_list_params, deployment_create_params
+from ...types.projects import deployment_list_params, deployment_create_params
+from ...types.shared.deployment import Deployment
+from ...types.projects.deployment_list_response import DeploymentListResponse
 
-__all__ = ["Deployments", "AsyncDeployments"]
+__all__ = ["DeploymentsResource", "AsyncDeploymentsResource"]
 
 
-class Deployments(SyncAPIResource):
+class DeploymentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DeploymentsWithRawResponse:
-        return DeploymentsWithRawResponse(self)
+    def with_raw_response(self) -> DeploymentsResourceWithRawResponse:
+        return DeploymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DeploymentsWithStreamingResponse:
-        return DeploymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> DeploymentsResourceWithStreamingResponse:
+        return DeploymentsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -228,14 +229,14 @@ class Deployments(SyncAPIResource):
         )
 
 
-class AsyncDeployments(AsyncAPIResource):
+class AsyncDeploymentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDeploymentsWithRawResponse:
-        return AsyncDeploymentsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDeploymentsResourceWithRawResponse:
+        return AsyncDeploymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDeploymentsWithStreamingResponse:
-        return AsyncDeploymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDeploymentsResourceWithStreamingResponse:
+        return AsyncDeploymentsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -428,8 +429,8 @@ class AsyncDeployments(AsyncAPIResource):
         )
 
 
-class DeploymentsWithRawResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = to_raw_response_wrapper(
@@ -440,8 +441,8 @@ class DeploymentsWithRawResponse:
         )
 
 
-class AsyncDeploymentsWithRawResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithRawResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = async_to_raw_response_wrapper(
@@ -452,8 +453,8 @@ class AsyncDeploymentsWithRawResponse:
         )
 
 
-class DeploymentsWithStreamingResponse:
-    def __init__(self, deployments: Deployments) -> None:
+class DeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: DeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = to_streamed_response_wrapper(
@@ -464,8 +465,8 @@ class DeploymentsWithStreamingResponse:
         )
 
 
-class AsyncDeploymentsWithStreamingResponse:
-    def __init__(self, deployments: AsyncDeployments) -> None:
+class AsyncDeploymentsResourceWithStreamingResponse:
+    def __init__(self, deployments: AsyncDeploymentsResource) -> None:
         self._deployments = deployments
 
         self.create = async_to_streamed_response_wrapper(

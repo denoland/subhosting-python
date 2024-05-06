@@ -165,7 +165,7 @@ client = Subhosting(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).organizations.get(
+client.with_options(timeout=5.0).organizations.get(
     "DEPLOY_ORG_ID",
 )
 ```
@@ -239,7 +239,7 @@ The context manager is required so that the response will reliably be closed.
 
 ### Making custom/undocumented requests
 
-This library is typed for convenient access the documented API.
+This library is typed for convenient access to the documented API.
 
 If you need to access undocumented endpoints, params, or response properties, the library can still be used.
 

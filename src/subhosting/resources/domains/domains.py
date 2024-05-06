@@ -21,33 +21,33 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from .certificates import (
-    Certificates,
-    AsyncCertificates,
-    CertificatesWithRawResponse,
-    AsyncCertificatesWithRawResponse,
-    CertificatesWithStreamingResponse,
-    AsyncCertificatesWithStreamingResponse,
+    CertificatesResource,
+    AsyncCertificatesResource,
+    CertificatesResourceWithRawResponse,
+    AsyncCertificatesResourceWithRawResponse,
+    CertificatesResourceWithStreamingResponse,
+    AsyncCertificatesResourceWithStreamingResponse,
 )
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Domain
+from ...types.shared.domain import Domain
 
-__all__ = ["Domains", "AsyncDomains"]
+__all__ = ["DomainsResource", "AsyncDomainsResource"]
 
 
-class Domains(SyncAPIResource):
+class DomainsResource(SyncAPIResource):
     @cached_property
-    def certificates(self) -> Certificates:
-        return Certificates(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> DomainsWithRawResponse:
-        return DomainsWithRawResponse(self)
+    def certificates(self) -> CertificatesResource:
+        return CertificatesResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> DomainsWithStreamingResponse:
-        return DomainsWithStreamingResponse(self)
+    def with_raw_response(self) -> DomainsResourceWithRawResponse:
+        return DomainsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> DomainsResourceWithStreamingResponse:
+        return DomainsResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -205,18 +205,18 @@ class Domains(SyncAPIResource):
         )
 
 
-class AsyncDomains(AsyncAPIResource):
+class AsyncDomainsResource(AsyncAPIResource):
     @cached_property
-    def certificates(self) -> AsyncCertificates:
-        return AsyncCertificates(self._client)
+    def certificates(self) -> AsyncCertificatesResource:
+        return AsyncCertificatesResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncDomainsWithRawResponse:
-        return AsyncDomainsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDomainsResourceWithRawResponse:
+        return AsyncDomainsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDomainsWithStreamingResponse:
-        return AsyncDomainsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDomainsResourceWithStreamingResponse:
+        return AsyncDomainsResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -374,8 +374,8 @@ class AsyncDomains(AsyncAPIResource):
         )
 
 
-class DomainsWithRawResponse:
-    def __init__(self, domains: Domains) -> None:
+class DomainsResourceWithRawResponse:
+    def __init__(self, domains: DomainsResource) -> None:
         self._domains = domains
 
         self.update = to_raw_response_wrapper(
@@ -392,12 +392,12 @@ class DomainsWithRawResponse:
         )
 
     @cached_property
-    def certificates(self) -> CertificatesWithRawResponse:
-        return CertificatesWithRawResponse(self._domains.certificates)
+    def certificates(self) -> CertificatesResourceWithRawResponse:
+        return CertificatesResourceWithRawResponse(self._domains.certificates)
 
 
-class AsyncDomainsWithRawResponse:
-    def __init__(self, domains: AsyncDomains) -> None:
+class AsyncDomainsResourceWithRawResponse:
+    def __init__(self, domains: AsyncDomainsResource) -> None:
         self._domains = domains
 
         self.update = async_to_raw_response_wrapper(
@@ -414,12 +414,12 @@ class AsyncDomainsWithRawResponse:
         )
 
     @cached_property
-    def certificates(self) -> AsyncCertificatesWithRawResponse:
-        return AsyncCertificatesWithRawResponse(self._domains.certificates)
+    def certificates(self) -> AsyncCertificatesResourceWithRawResponse:
+        return AsyncCertificatesResourceWithRawResponse(self._domains.certificates)
 
 
-class DomainsWithStreamingResponse:
-    def __init__(self, domains: Domains) -> None:
+class DomainsResourceWithStreamingResponse:
+    def __init__(self, domains: DomainsResource) -> None:
         self._domains = domains
 
         self.update = to_streamed_response_wrapper(
@@ -436,12 +436,12 @@ class DomainsWithStreamingResponse:
         )
 
     @cached_property
-    def certificates(self) -> CertificatesWithStreamingResponse:
-        return CertificatesWithStreamingResponse(self._domains.certificates)
+    def certificates(self) -> CertificatesResourceWithStreamingResponse:
+        return CertificatesResourceWithStreamingResponse(self._domains.certificates)
 
 
-class AsyncDomainsWithStreamingResponse:
-    def __init__(self, domains: AsyncDomains) -> None:
+class AsyncDomainsResourceWithStreamingResponse:
+    def __init__(self, domains: AsyncDomainsResource) -> None:
         self._domains = domains
 
         self.update = async_to_streamed_response_wrapper(
@@ -458,5 +458,5 @@ class AsyncDomainsWithStreamingResponse:
         )
 
     @cached_property
-    def certificates(self) -> AsyncCertificatesWithStreamingResponse:
-        return AsyncCertificatesWithStreamingResponse(self._domains.certificates)
+    def certificates(self) -> AsyncCertificatesResourceWithStreamingResponse:
+        return AsyncCertificatesResourceWithStreamingResponse(self._domains.certificates)

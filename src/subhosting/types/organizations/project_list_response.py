@@ -2,7 +2,7 @@
 
 from typing import List
 
-from ..shared import Project
+from ..shared.project import Project
 
 __all__ = ["ProjectListResponse"]
 

@@ -46,11 +46,11 @@ __all__ = [
 
 
 class Subhosting(SyncAPIClient):
-    organizations: resources.Organizations
-    databases: resources.Databases
-    projects: resources.Projects
-    deployments: resources.Deployments
-    domains: resources.Domains
+    organizations: resources.OrganizationsResource
+    databases: resources.DatabasesResource
+    projects: resources.ProjectsResource
+    deployments: resources.DeploymentsResource
+    domains: resources.DomainsResource
     with_raw_response: SubhostingWithRawResponse
     with_streaming_response: SubhostingWithStreamedResponse
 
@@ -108,11 +108,11 @@ class Subhosting(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.organizations = resources.Organizations(self)
-        self.databases = resources.Databases(self)
-        self.projects = resources.Projects(self)
-        self.deployments = resources.Deployments(self)
-        self.domains = resources.Domains(self)
+        self.organizations = resources.OrganizationsResource(self)
+        self.databases = resources.DatabasesResource(self)
+        self.projects = resources.ProjectsResource(self)
+        self.deployments = resources.DeploymentsResource(self)
+        self.domains = resources.DomainsResource(self)
         self.with_raw_response = SubhostingWithRawResponse(self)
         self.with_streaming_response = SubhostingWithStreamedResponse(self)
 
@@ -222,11 +222,11 @@ class Subhosting(SyncAPIClient):
 
 
 class AsyncSubhosting(AsyncAPIClient):
-    organizations: resources.AsyncOrganizations
-    databases: resources.AsyncDatabases
-    projects: resources.AsyncProjects
-    deployments: resources.AsyncDeployments
-    domains: resources.AsyncDomains
+    organizations: resources.AsyncOrganizationsResource
+    databases: resources.AsyncDatabasesResource
+    projects: resources.AsyncProjectsResource
+    deployments: resources.AsyncDeploymentsResource
+    domains: resources.AsyncDomainsResource
     with_raw_response: AsyncSubhostingWithRawResponse
     with_streaming_response: AsyncSubhostingWithStreamedResponse
 
@@ -284,11 +284,11 @@ class AsyncSubhosting(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.organizations = resources.AsyncOrganizations(self)
-        self.databases = resources.AsyncDatabases(self)
-        self.projects = resources.AsyncProjects(self)
-        self.deployments = resources.AsyncDeployments(self)
-        self.domains = resources.AsyncDomains(self)
+        self.organizations = resources.AsyncOrganizationsResource(self)
+        self.databases = resources.AsyncDatabasesResource(self)
+        self.projects = resources.AsyncProjectsResource(self)
+        self.deployments = resources.AsyncDeploymentsResource(self)
+        self.domains = resources.AsyncDomainsResource(self)
         self.with_raw_response = AsyncSubhostingWithRawResponse(self)
         self.with_streaming_response = AsyncSubhostingWithStreamedResponse(self)
 
@@ -399,38 +399,38 @@ class AsyncSubhosting(AsyncAPIClient):
 
 class SubhostingWithRawResponse:
     def __init__(self, client: Subhosting) -> None:
-        self.organizations = resources.OrganizationsWithRawResponse(client.organizations)
-        self.databases = resources.DatabasesWithRawResponse(client.databases)
-        self.projects = resources.ProjectsWithRawResponse(client.projects)
-        self.deployments = resources.DeploymentsWithRawResponse(client.deployments)
-        self.domains = resources.DomainsWithRawResponse(client.domains)
+        self.organizations = resources.OrganizationsResourceWithRawResponse(client.organizations)
+        self.databases = resources.DatabasesResourceWithRawResponse(client.databases)
+        self.projects = resources.ProjectsResourceWithRawResponse(client.projects)
+        self.deployments = resources.DeploymentsResourceWithRawResponse(client.deployments)
+        self.domains = resources.DomainsResourceWithRawResponse(client.domains)
 
 
 class AsyncSubhostingWithRawResponse:
     def __init__(self, client: AsyncSubhosting) -> None:
-        self.organizations = resources.AsyncOrganizationsWithRawResponse(client.organizations)
-        self.databases = resources.AsyncDatabasesWithRawResponse(client.databases)
-        self.projects = resources.AsyncProjectsWithRawResponse(client.projects)
-        self.deployments = resources.AsyncDeploymentsWithRawResponse(client.deployments)
-        self.domains = resources.AsyncDomainsWithRawResponse(client.domains)
+        self.organizations = resources.AsyncOrganizationsResourceWithRawResponse(client.organizations)
+        self.databases = resources.AsyncDatabasesResourceWithRawResponse(client.databases)
+        self.projects = resources.AsyncProjectsResourceWithRawResponse(client.projects)
+        self.deployments = resources.AsyncDeploymentsResourceWithRawResponse(client.deployments)
+        self.domains = resources.AsyncDomainsResourceWithRawResponse(client.domains)
 
 
 class SubhostingWithStreamedResponse:
     def __init__(self, client: Subhosting) -> None:
-        self.organizations = resources.OrganizationsWithStreamingResponse(client.organizations)
-        self.databases = resources.DatabasesWithStreamingResponse(client.databases)
-        self.projects = resources.ProjectsWithStreamingResponse(client.projects)
-        self.deployments = resources.DeploymentsWithStreamingResponse(client.deployments)
-        self.domains = resources.DomainsWithStreamingResponse(client.domains)
+        self.organizations = resources.OrganizationsResourceWithStreamingResponse(client.organizations)
+        self.databases = resources.DatabasesResourceWithStreamingResponse(client.databases)
+        self.projects = resources.ProjectsResourceWithStreamingResponse(client.projects)
+        self.deployments = resources.DeploymentsResourceWithStreamingResponse(client.deployments)
+        self.domains = resources.DomainsResourceWithStreamingResponse(client.domains)
 
 
 class AsyncSubhostingWithStreamedResponse:
     def __init__(self, client: AsyncSubhosting) -> None:
-        self.organizations = resources.AsyncOrganizationsWithStreamingResponse(client.organizations)
-        self.databases = resources.AsyncDatabasesWithStreamingResponse(client.databases)
-        self.projects = resources.AsyncProjectsWithStreamingResponse(client.projects)
-        self.deployments = resources.AsyncDeploymentsWithStreamingResponse(client.deployments)
-        self.domains = resources.AsyncDomainsWithStreamingResponse(client.domains)
+        self.organizations = resources.AsyncOrganizationsResourceWithStreamingResponse(client.organizations)
+        self.databases = resources.AsyncDatabasesResourceWithStreamingResponse(client.databases)
+        self.projects = resources.AsyncProjectsResourceWithStreamingResponse(client.projects)
+        self.deployments = resources.AsyncDeploymentsResourceWithStreamingResponse(client.deployments)
+        self.domains = resources.AsyncDomainsResourceWithStreamingResponse(client.domains)
 
 
 Client = Subhosting
