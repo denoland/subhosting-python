@@ -24,19 +24,20 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.deployments import AppLogGetResponse, app_log_get_params
+from ...types.deployments import app_log_get_params
+from ...types.deployments.app_log_get_response import AppLogGetResponse
 
-__all__ = ["AppLogs", "AsyncAppLogs"]
+__all__ = ["AppLogsResource", "AsyncAppLogsResource"]
 
 
-class AppLogs(SyncAPIResource):
+class AppLogsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AppLogsWithRawResponse:
-        return AppLogsWithRawResponse(self)
+    def with_raw_response(self) -> AppLogsResourceWithRawResponse:
+        return AppLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AppLogsWithStreamingResponse:
-        return AppLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AppLogsResourceWithStreamingResponse:
+        return AppLogsResourceWithStreamingResponse(self)
 
     def get(
         self,
@@ -191,14 +192,14 @@ class AppLogs(SyncAPIResource):
         )
 
 
-class AsyncAppLogs(AsyncAPIResource):
+class AsyncAppLogsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAppLogsWithRawResponse:
-        return AsyncAppLogsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAppLogsResourceWithRawResponse:
+        return AsyncAppLogsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAppLogsWithStreamingResponse:
-        return AsyncAppLogsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAppLogsResourceWithStreamingResponse:
+        return AsyncAppLogsResourceWithStreamingResponse(self)
 
     async def get(
         self,
@@ -353,8 +354,8 @@ class AsyncAppLogs(AsyncAPIResource):
         )
 
 
-class AppLogsWithRawResponse:
-    def __init__(self, app_logs: AppLogs) -> None:
+class AppLogsResourceWithRawResponse:
+    def __init__(self, app_logs: AppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = to_raw_response_wrapper(
@@ -362,8 +363,8 @@ class AppLogsWithRawResponse:
         )
 
 
-class AsyncAppLogsWithRawResponse:
-    def __init__(self, app_logs: AsyncAppLogs) -> None:
+class AsyncAppLogsResourceWithRawResponse:
+    def __init__(self, app_logs: AsyncAppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = async_to_raw_response_wrapper(
@@ -371,8 +372,8 @@ class AsyncAppLogsWithRawResponse:
         )
 
 
-class AppLogsWithStreamingResponse:
-    def __init__(self, app_logs: AppLogs) -> None:
+class AppLogsResourceWithStreamingResponse:
+    def __init__(self, app_logs: AppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = to_streamed_response_wrapper(
@@ -380,8 +381,8 @@ class AppLogsWithStreamingResponse:
         )
 
 
-class AsyncAppLogsWithStreamingResponse:
-    def __init__(self, app_logs: AsyncAppLogs) -> None:
+class AsyncAppLogsResourceWithStreamingResponse:
+    def __init__(self, app_logs: AsyncAppLogsResource) -> None:
         self._app_logs = app_logs
 
         self.get = async_to_streamed_response_wrapper(

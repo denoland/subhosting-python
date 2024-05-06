@@ -22,17 +22,17 @@ from ..._base_client import (
 )
 from ...types.domains import certificate_create_params
 
-__all__ = ["Certificates", "AsyncCertificates"]
+__all__ = ["CertificatesResource", "AsyncCertificatesResource"]
 
 
-class Certificates(SyncAPIResource):
+class CertificatesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CertificatesWithRawResponse:
-        return CertificatesWithRawResponse(self)
+    def with_raw_response(self) -> CertificatesResourceWithRawResponse:
+        return CertificatesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CertificatesWithStreamingResponse:
-        return CertificatesWithStreamingResponse(self)
+    def with_streaming_response(self) -> CertificatesResourceWithStreamingResponse:
+        return CertificatesResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -128,14 +128,14 @@ class Certificates(SyncAPIResource):
         )
 
 
-class AsyncCertificates(AsyncAPIResource):
+class AsyncCertificatesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCertificatesWithRawResponse:
-        return AsyncCertificatesWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCertificatesResourceWithRawResponse:
+        return AsyncCertificatesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCertificatesWithStreamingResponse:
-        return AsyncCertificatesWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCertificatesResourceWithStreamingResponse:
+        return AsyncCertificatesResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -231,8 +231,8 @@ class AsyncCertificates(AsyncAPIResource):
         )
 
 
-class CertificatesWithRawResponse:
-    def __init__(self, certificates: Certificates) -> None:
+class CertificatesResourceWithRawResponse:
+    def __init__(self, certificates: CertificatesResource) -> None:
         self._certificates = certificates
 
         self.create = to_raw_response_wrapper(
@@ -243,8 +243,8 @@ class CertificatesWithRawResponse:
         )
 
 
-class AsyncCertificatesWithRawResponse:
-    def __init__(self, certificates: AsyncCertificates) -> None:
+class AsyncCertificatesResourceWithRawResponse:
+    def __init__(self, certificates: AsyncCertificatesResource) -> None:
         self._certificates = certificates
 
         self.create = async_to_raw_response_wrapper(
@@ -255,8 +255,8 @@ class AsyncCertificatesWithRawResponse:
         )
 
 
-class CertificatesWithStreamingResponse:
-    def __init__(self, certificates: Certificates) -> None:
+class CertificatesResourceWithStreamingResponse:
+    def __init__(self, certificates: CertificatesResource) -> None:
         self._certificates = certificates
 
         self.create = to_streamed_response_wrapper(
@@ -267,8 +267,8 @@ class CertificatesWithStreamingResponse:
         )
 
 
-class AsyncCertificatesWithStreamingResponse:
-    def __init__(self, certificates: AsyncCertificates) -> None:
+class AsyncCertificatesResourceWithStreamingResponse:
+    def __init__(self, certificates: AsyncCertificatesResource) -> None:
         self._certificates = certificates
 
         self.create = async_to_streamed_response_wrapper(

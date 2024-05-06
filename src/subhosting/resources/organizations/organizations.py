@@ -4,40 +4,39 @@ from __future__ import annotations
 
 import httpx
 
-from ...types import Organization
 from .domains import (
-    Domains,
-    AsyncDomains,
-    DomainsWithRawResponse,
-    AsyncDomainsWithRawResponse,
-    DomainsWithStreamingResponse,
-    AsyncDomainsWithStreamingResponse,
+    DomainsResource,
+    AsyncDomainsResource,
+    DomainsResourceWithRawResponse,
+    AsyncDomainsResourceWithRawResponse,
+    DomainsResourceWithStreamingResponse,
+    AsyncDomainsResourceWithStreamingResponse,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .projects import (
-    Projects,
-    AsyncProjects,
-    ProjectsWithRawResponse,
-    AsyncProjectsWithRawResponse,
-    ProjectsWithStreamingResponse,
-    AsyncProjectsWithStreamingResponse,
+    ProjectsResource,
+    AsyncProjectsResource,
+    ProjectsResourceWithRawResponse,
+    AsyncProjectsResourceWithRawResponse,
+    ProjectsResourceWithStreamingResponse,
+    AsyncProjectsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
 from .analytics import (
-    Analytics,
-    AsyncAnalytics,
-    AnalyticsWithRawResponse,
-    AsyncAnalyticsWithRawResponse,
-    AnalyticsWithStreamingResponse,
-    AsyncAnalyticsWithStreamingResponse,
+    AnalyticsResource,
+    AsyncAnalyticsResource,
+    AnalyticsResourceWithRawResponse,
+    AsyncAnalyticsResourceWithRawResponse,
+    AnalyticsResourceWithStreamingResponse,
+    AsyncAnalyticsResourceWithStreamingResponse,
 )
 from .databases import (
-    Databases,
-    AsyncDatabases,
-    DatabasesWithRawResponse,
-    AsyncDatabasesWithRawResponse,
-    DatabasesWithStreamingResponse,
-    AsyncDatabasesWithStreamingResponse,
+    DatabasesResource,
+    AsyncDatabasesResource,
+    DatabasesResourceWithRawResponse,
+    AsyncDatabasesResourceWithRawResponse,
+    DatabasesResourceWithStreamingResponse,
+    AsyncDatabasesResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -49,34 +48,35 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
+from ...types.organization import Organization
 
-__all__ = ["Organizations", "AsyncOrganizations"]
+__all__ = ["OrganizationsResource", "AsyncOrganizationsResource"]
 
 
-class Organizations(SyncAPIResource):
+class OrganizationsResource(SyncAPIResource):
     @cached_property
-    def analytics(self) -> Analytics:
-        return Analytics(self._client)
-
-    @cached_property
-    def projects(self) -> Projects:
-        return Projects(self._client)
+    def analytics(self) -> AnalyticsResource:
+        return AnalyticsResource(self._client)
 
     @cached_property
-    def databases(self) -> Databases:
-        return Databases(self._client)
+    def projects(self) -> ProjectsResource:
+        return ProjectsResource(self._client)
 
     @cached_property
-    def domains(self) -> Domains:
-        return Domains(self._client)
+    def databases(self) -> DatabasesResource:
+        return DatabasesResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> OrganizationsWithRawResponse:
-        return OrganizationsWithRawResponse(self)
+    def domains(self) -> DomainsResource:
+        return DomainsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> OrganizationsWithStreamingResponse:
-        return OrganizationsWithStreamingResponse(self)
+    def with_raw_response(self) -> OrganizationsResourceWithRawResponse:
+        return OrganizationsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> OrganizationsResourceWithStreamingResponse:
+        return OrganizationsResourceWithStreamingResponse(self)
 
     def get(
         self,
@@ -112,30 +112,30 @@ class Organizations(SyncAPIResource):
         )
 
 
-class AsyncOrganizations(AsyncAPIResource):
+class AsyncOrganizationsResource(AsyncAPIResource):
     @cached_property
-    def analytics(self) -> AsyncAnalytics:
-        return AsyncAnalytics(self._client)
+    def analytics(self) -> AsyncAnalyticsResource:
+        return AsyncAnalyticsResource(self._client)
 
     @cached_property
-    def projects(self) -> AsyncProjects:
-        return AsyncProjects(self._client)
+    def projects(self) -> AsyncProjectsResource:
+        return AsyncProjectsResource(self._client)
 
     @cached_property
-    def databases(self) -> AsyncDatabases:
-        return AsyncDatabases(self._client)
+    def databases(self) -> AsyncDatabasesResource:
+        return AsyncDatabasesResource(self._client)
 
     @cached_property
-    def domains(self) -> AsyncDomains:
-        return AsyncDomains(self._client)
+    def domains(self) -> AsyncDomainsResource:
+        return AsyncDomainsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncOrganizationsWithRawResponse:
-        return AsyncOrganizationsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncOrganizationsResourceWithRawResponse:
+        return AsyncOrganizationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncOrganizationsWithStreamingResponse:
-        return AsyncOrganizationsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncOrganizationsResourceWithStreamingResponse:
+        return AsyncOrganizationsResourceWithStreamingResponse(self)
 
     async def get(
         self,
@@ -171,8 +171,8 @@ class AsyncOrganizations(AsyncAPIResource):
         )
 
 
-class OrganizationsWithRawResponse:
-    def __init__(self, organizations: Organizations) -> None:
+class OrganizationsResourceWithRawResponse:
+    def __init__(self, organizations: OrganizationsResource) -> None:
         self._organizations = organizations
 
         self.get = to_raw_response_wrapper(
@@ -180,24 +180,24 @@ class OrganizationsWithRawResponse:
         )
 
     @cached_property
-    def analytics(self) -> AnalyticsWithRawResponse:
-        return AnalyticsWithRawResponse(self._organizations.analytics)
+    def analytics(self) -> AnalyticsResourceWithRawResponse:
+        return AnalyticsResourceWithRawResponse(self._organizations.analytics)
 
     @cached_property
-    def projects(self) -> ProjectsWithRawResponse:
-        return ProjectsWithRawResponse(self._organizations.projects)
+    def projects(self) -> ProjectsResourceWithRawResponse:
+        return ProjectsResourceWithRawResponse(self._organizations.projects)
 
     @cached_property
-    def databases(self) -> DatabasesWithRawResponse:
-        return DatabasesWithRawResponse(self._organizations.databases)
+    def databases(self) -> DatabasesResourceWithRawResponse:
+        return DatabasesResourceWithRawResponse(self._organizations.databases)
 
     @cached_property
-    def domains(self) -> DomainsWithRawResponse:
-        return DomainsWithRawResponse(self._organizations.domains)
+    def domains(self) -> DomainsResourceWithRawResponse:
+        return DomainsResourceWithRawResponse(self._organizations.domains)
 
 
-class AsyncOrganizationsWithRawResponse:
-    def __init__(self, organizations: AsyncOrganizations) -> None:
+class AsyncOrganizationsResourceWithRawResponse:
+    def __init__(self, organizations: AsyncOrganizationsResource) -> None:
         self._organizations = organizations
 
         self.get = async_to_raw_response_wrapper(
@@ -205,24 +205,24 @@ class AsyncOrganizationsWithRawResponse:
         )
 
     @cached_property
-    def analytics(self) -> AsyncAnalyticsWithRawResponse:
-        return AsyncAnalyticsWithRawResponse(self._organizations.analytics)
+    def analytics(self) -> AsyncAnalyticsResourceWithRawResponse:
+        return AsyncAnalyticsResourceWithRawResponse(self._organizations.analytics)
 
     @cached_property
-    def projects(self) -> AsyncProjectsWithRawResponse:
-        return AsyncProjectsWithRawResponse(self._organizations.projects)
+    def projects(self) -> AsyncProjectsResourceWithRawResponse:
+        return AsyncProjectsResourceWithRawResponse(self._organizations.projects)
 
     @cached_property
-    def databases(self) -> AsyncDatabasesWithRawResponse:
-        return AsyncDatabasesWithRawResponse(self._organizations.databases)
+    def databases(self) -> AsyncDatabasesResourceWithRawResponse:
+        return AsyncDatabasesResourceWithRawResponse(self._organizations.databases)
 
     @cached_property
-    def domains(self) -> AsyncDomainsWithRawResponse:
-        return AsyncDomainsWithRawResponse(self._organizations.domains)
+    def domains(self) -> AsyncDomainsResourceWithRawResponse:
+        return AsyncDomainsResourceWithRawResponse(self._organizations.domains)
 
 
-class OrganizationsWithStreamingResponse:
-    def __init__(self, organizations: Organizations) -> None:
+class OrganizationsResourceWithStreamingResponse:
+    def __init__(self, organizations: OrganizationsResource) -> None:
         self._organizations = organizations
 
         self.get = to_streamed_response_wrapper(
@@ -230,24 +230,24 @@ class OrganizationsWithStreamingResponse:
         )
 
     @cached_property
-    def analytics(self) -> AnalyticsWithStreamingResponse:
-        return AnalyticsWithStreamingResponse(self._organizations.analytics)
+    def analytics(self) -> AnalyticsResourceWithStreamingResponse:
+        return AnalyticsResourceWithStreamingResponse(self._organizations.analytics)
 
     @cached_property
-    def projects(self) -> ProjectsWithStreamingResponse:
-        return ProjectsWithStreamingResponse(self._organizations.projects)
+    def projects(self) -> ProjectsResourceWithStreamingResponse:
+        return ProjectsResourceWithStreamingResponse(self._organizations.projects)
 
     @cached_property
-    def databases(self) -> DatabasesWithStreamingResponse:
-        return DatabasesWithStreamingResponse(self._organizations.databases)
+    def databases(self) -> DatabasesResourceWithStreamingResponse:
+        return DatabasesResourceWithStreamingResponse(self._organizations.databases)
 
     @cached_property
-    def domains(self) -> DomainsWithStreamingResponse:
-        return DomainsWithStreamingResponse(self._organizations.domains)
+    def domains(self) -> DomainsResourceWithStreamingResponse:
+        return DomainsResourceWithStreamingResponse(self._organizations.domains)
 
 
-class AsyncOrganizationsWithStreamingResponse:
-    def __init__(self, organizations: AsyncOrganizations) -> None:
+class AsyncOrganizationsResourceWithStreamingResponse:
+    def __init__(self, organizations: AsyncOrganizationsResource) -> None:
         self._organizations = organizations
 
         self.get = async_to_streamed_response_wrapper(
@@ -255,17 +255,17 @@ class AsyncOrganizationsWithStreamingResponse:
         )
 
     @cached_property
-    def analytics(self) -> AsyncAnalyticsWithStreamingResponse:
-        return AsyncAnalyticsWithStreamingResponse(self._organizations.analytics)
+    def analytics(self) -> AsyncAnalyticsResourceWithStreamingResponse:
+        return AsyncAnalyticsResourceWithStreamingResponse(self._organizations.analytics)
 
     @cached_property
-    def projects(self) -> AsyncProjectsWithStreamingResponse:
-        return AsyncProjectsWithStreamingResponse(self._organizations.projects)
+    def projects(self) -> AsyncProjectsResourceWithStreamingResponse:
+        return AsyncProjectsResourceWithStreamingResponse(self._organizations.projects)
 
     @cached_property
-    def databases(self) -> AsyncDatabasesWithStreamingResponse:
-        return AsyncDatabasesWithStreamingResponse(self._organizations.databases)
+    def databases(self) -> AsyncDatabasesResourceWithStreamingResponse:
+        return AsyncDatabasesResourceWithStreamingResponse(self._organizations.databases)
 
     @cached_property
-    def domains(self) -> AsyncDomainsWithStreamingResponse:
-        return AsyncDomainsWithStreamingResponse(self._organizations.domains)
+    def domains(self) -> AsyncDomainsResourceWithStreamingResponse:
+        return AsyncDomainsResourceWithStreamingResponse(self._organizations.domains)

@@ -22,20 +22,21 @@ from ..._response import (
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import KvDatabase
-from ...types.organizations import DatabaseListResponse, database_list_params, database_create_params
+from ...types.organizations import database_list_params, database_create_params
+from ...types.shared.kv_database import KvDatabase
+from ...types.organizations.database_list_response import DatabaseListResponse
 
-__all__ = ["Databases", "AsyncDatabases"]
+__all__ = ["DatabasesResource", "AsyncDatabasesResource"]
 
 
-class Databases(SyncAPIResource):
+class DatabasesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DatabasesWithRawResponse:
-        return DatabasesWithRawResponse(self)
+    def with_raw_response(self) -> DatabasesResourceWithRawResponse:
+        return DatabasesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DatabasesWithStreamingResponse:
-        return DatabasesWithStreamingResponse(self)
+    def with_streaming_response(self) -> DatabasesResourceWithStreamingResponse:
+        return DatabasesResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -146,14 +147,14 @@ class Databases(SyncAPIResource):
         )
 
 
-class AsyncDatabases(AsyncAPIResource):
+class AsyncDatabasesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDatabasesWithRawResponse:
-        return AsyncDatabasesWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDatabasesResourceWithRawResponse:
+        return AsyncDatabasesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDatabasesWithStreamingResponse:
-        return AsyncDatabasesWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDatabasesResourceWithStreamingResponse:
+        return AsyncDatabasesResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -264,8 +265,8 @@ class AsyncDatabases(AsyncAPIResource):
         )
 
 
-class DatabasesWithRawResponse:
-    def __init__(self, databases: Databases) -> None:
+class DatabasesResourceWithRawResponse:
+    def __init__(self, databases: DatabasesResource) -> None:
         self._databases = databases
 
         self.create = to_raw_response_wrapper(
@@ -276,8 +277,8 @@ class DatabasesWithRawResponse:
         )
 
 
-class AsyncDatabasesWithRawResponse:
-    def __init__(self, databases: AsyncDatabases) -> None:
+class AsyncDatabasesResourceWithRawResponse:
+    def __init__(self, databases: AsyncDatabasesResource) -> None:
         self._databases = databases
 
         self.create = async_to_raw_response_wrapper(
@@ -288,8 +289,8 @@ class AsyncDatabasesWithRawResponse:
         )
 
 
-class DatabasesWithStreamingResponse:
-    def __init__(self, databases: Databases) -> None:
+class DatabasesResourceWithStreamingResponse:
+    def __init__(self, databases: DatabasesResource) -> None:
         self._databases = databases
 
         self.create = to_streamed_response_wrapper(
@@ -300,8 +301,8 @@ class DatabasesWithStreamingResponse:
         )
 
 
-class AsyncDatabasesWithStreamingResponse:
-    def __init__(self, databases: AsyncDatabases) -> None:
+class AsyncDatabasesResourceWithStreamingResponse:
+    def __init__(self, databases: AsyncDatabasesResource) -> None:
         self._databases = databases
 
         self.create = async_to_streamed_response_wrapper(

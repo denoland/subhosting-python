@@ -14,12 +14,12 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from .analytics import (
-    Analytics,
-    AsyncAnalytics,
-    AnalyticsWithRawResponse,
-    AsyncAnalyticsWithRawResponse,
-    AnalyticsWithStreamingResponse,
-    AsyncAnalyticsWithStreamingResponse,
+    AnalyticsResource,
+    AsyncAnalyticsResource,
+    AnalyticsResourceWithRawResponse,
+    AsyncAnalyticsResourceWithRawResponse,
+    AnalyticsResourceWithStreamingResponse,
+    AsyncAnalyticsResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -29,37 +29,37 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from .deployments import (
-    Deployments,
-    AsyncDeployments,
-    DeploymentsWithRawResponse,
-    AsyncDeploymentsWithRawResponse,
-    DeploymentsWithStreamingResponse,
-    AsyncDeploymentsWithStreamingResponse,
+    DeploymentsResource,
+    AsyncDeploymentsResource,
+    DeploymentsResourceWithRawResponse,
+    AsyncDeploymentsResourceWithRawResponse,
+    DeploymentsResourceWithStreamingResponse,
+    AsyncDeploymentsResourceWithStreamingResponse,
 )
 from ..._base_client import (
     make_request_options,
 )
-from ...types.shared import Project
+from ...types.shared.project import Project
 
-__all__ = ["Projects", "AsyncProjects"]
+__all__ = ["ProjectsResource", "AsyncProjectsResource"]
 
 
-class Projects(SyncAPIResource):
+class ProjectsResource(SyncAPIResource):
     @cached_property
-    def analytics(self) -> Analytics:
-        return Analytics(self._client)
-
-    @cached_property
-    def deployments(self) -> Deployments:
-        return Deployments(self._client)
+    def analytics(self) -> AnalyticsResource:
+        return AnalyticsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> ProjectsWithRawResponse:
-        return ProjectsWithRawResponse(self)
+    def deployments(self) -> DeploymentsResource:
+        return DeploymentsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> ProjectsWithStreamingResponse:
-        return ProjectsWithStreamingResponse(self)
+    def with_raw_response(self) -> ProjectsResourceWithRawResponse:
+        return ProjectsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ProjectsResourceWithStreamingResponse:
+        return ProjectsResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -177,22 +177,22 @@ class Projects(SyncAPIResource):
         )
 
 
-class AsyncProjects(AsyncAPIResource):
+class AsyncProjectsResource(AsyncAPIResource):
     @cached_property
-    def analytics(self) -> AsyncAnalytics:
-        return AsyncAnalytics(self._client)
+    def analytics(self) -> AsyncAnalyticsResource:
+        return AsyncAnalyticsResource(self._client)
 
     @cached_property
-    def deployments(self) -> AsyncDeployments:
-        return AsyncDeployments(self._client)
+    def deployments(self) -> AsyncDeploymentsResource:
+        return AsyncDeploymentsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncProjectsWithRawResponse:
-        return AsyncProjectsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProjectsResourceWithRawResponse:
+        return AsyncProjectsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProjectsWithStreamingResponse:
-        return AsyncProjectsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProjectsResourceWithStreamingResponse:
+        return AsyncProjectsResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -310,8 +310,8 @@ class AsyncProjects(AsyncAPIResource):
         )
 
 
-class ProjectsWithRawResponse:
-    def __init__(self, projects: Projects) -> None:
+class ProjectsResourceWithRawResponse:
+    def __init__(self, projects: ProjectsResource) -> None:
         self._projects = projects
 
         self.update = to_raw_response_wrapper(
@@ -325,16 +325,16 @@ class ProjectsWithRawResponse:
         )
 
     @cached_property
-    def analytics(self) -> AnalyticsWithRawResponse:
-        return AnalyticsWithRawResponse(self._projects.analytics)
+    def analytics(self) -> AnalyticsResourceWithRawResponse:
+        return AnalyticsResourceWithRawResponse(self._projects.analytics)
 
     @cached_property
-    def deployments(self) -> DeploymentsWithRawResponse:
-        return DeploymentsWithRawResponse(self._projects.deployments)
+    def deployments(self) -> DeploymentsResourceWithRawResponse:
+        return DeploymentsResourceWithRawResponse(self._projects.deployments)
 
 
-class AsyncProjectsWithRawResponse:
-    def __init__(self, projects: AsyncProjects) -> None:
+class AsyncProjectsResourceWithRawResponse:
+    def __init__(self, projects: AsyncProjectsResource) -> None:
         self._projects = projects
 
         self.update = async_to_raw_response_wrapper(
@@ -348,16 +348,16 @@ class AsyncProjectsWithRawResponse:
         )
 
     @cached_property
-    def analytics(self) -> AsyncAnalyticsWithRawResponse:
-        return AsyncAnalyticsWithRawResponse(self._projects.analytics)
+    def analytics(self) -> AsyncAnalyticsResourceWithRawResponse:
+        return AsyncAnalyticsResourceWithRawResponse(self._projects.analytics)
 
     @cached_property
-    def deployments(self) -> AsyncDeploymentsWithRawResponse:
-        return AsyncDeploymentsWithRawResponse(self._projects.deployments)
+    def deployments(self) -> AsyncDeploymentsResourceWithRawResponse:
+        return AsyncDeploymentsResourceWithRawResponse(self._projects.deployments)
 
 
-class ProjectsWithStreamingResponse:
-    def __init__(self, projects: Projects) -> None:
+class ProjectsResourceWithStreamingResponse:
+    def __init__(self, projects: ProjectsResource) -> None:
         self._projects = projects
 
         self.update = to_streamed_response_wrapper(
@@ -371,16 +371,16 @@ class ProjectsWithStreamingResponse:
         )
 
     @cached_property
-    def analytics(self) -> AnalyticsWithStreamingResponse:
-        return AnalyticsWithStreamingResponse(self._projects.analytics)
+    def analytics(self) -> AnalyticsResourceWithStreamingResponse:
+        return AnalyticsResourceWithStreamingResponse(self._projects.analytics)
 
     @cached_property
-    def deployments(self) -> DeploymentsWithStreamingResponse:
-        return DeploymentsWithStreamingResponse(self._projects.deployments)
+    def deployments(self) -> DeploymentsResourceWithStreamingResponse:
+        return DeploymentsResourceWithStreamingResponse(self._projects.deployments)
 
 
-class AsyncProjectsWithStreamingResponse:
-    def __init__(self, projects: AsyncProjects) -> None:
+class AsyncProjectsResourceWithStreamingResponse:
+    def __init__(self, projects: AsyncProjectsResource) -> None:
         self._projects = projects
 
         self.update = async_to_streamed_response_wrapper(
@@ -394,9 +394,9 @@ class AsyncProjectsWithStreamingResponse:
         )
 
     @cached_property
-    def analytics(self) -> AsyncAnalyticsWithStreamingResponse:
-        return AsyncAnalyticsWithStreamingResponse(self._projects.analytics)
+    def analytics(self) -> AsyncAnalyticsResourceWithStreamingResponse:
+        return AsyncAnalyticsResourceWithStreamingResponse(self._projects.analytics)
 
     @cached_property
-    def deployments(self) -> AsyncDeploymentsWithStreamingResponse:
-        return AsyncDeploymentsWithStreamingResponse(self._projects.deployments)
+    def deployments(self) -> AsyncDeploymentsResourceWithStreamingResponse:
+        return AsyncDeploymentsResourceWithStreamingResponse(self._projects.deployments)
