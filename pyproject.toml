@@ -1,6 +1,6 @@
 [project]
 name = "subhosting"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 description = "The official Python library for the subhosting API"
 dynamic = ["readme"]
 license = "MIT"
